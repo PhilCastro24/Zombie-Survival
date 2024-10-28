@@ -37,6 +37,7 @@ public class EnemyController : MonoBehaviour
     float distanceToTarget = Mathf.Infinity;
 
     private Vector3 investigationPoint;
+    private bool isAlerted = false;
 
     void Start()
     {
@@ -122,7 +123,7 @@ public class EnemyController : MonoBehaviour
 
             if (angleBetweenEnemyAndTarget <= viewAngle / 2)
             {
-                if(!Physics.Linecast(transform.position + Vector3.up * 3f, 
+                if (!Physics.Linecast(transform.position + Vector3.up * 3f,
                     target.position + Vector3.up * 3f, obstacleMask))
                 {
                     return true;
@@ -136,8 +137,8 @@ public class EnemyController : MonoBehaviour
     {
         if (navMeshAgent.enabled)
         {
-            if (!navMeshAgent.pathPending&&
-                navMeshAgent.remainingDistance<=navMeshAgent.stoppingDistance)
+            if (!navMeshAgent.pathPending &&
+                navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
             {
                 navMeshAgent.isStopped = true;
                 animator.SetBool("isMoving", false);
@@ -183,6 +184,8 @@ public class EnemyController : MonoBehaviour
     {
         if (enemyHealth.IsDead()) return;
 
+        isAlerted = true;
+
         currentState = EnemyState.Chasing;
 
         if (navMeshAgent.enabled)
@@ -202,19 +205,23 @@ public class EnemyController : MonoBehaviour
 
         FaceTarget();
 
-        if (distanceToTarget > chaseRange)
+        if (!CanSeePlayer() && !isAlerted)
         {
-            navMeshAgent.isStopped = false;
+            navMeshAgent.isStopped = true;
             currentState = EnemyState.Idle;
             animator.SetBool("Attack", false);
-        }
-        else if (distanceToTarget > navMeshAgent.stoppingDistance)
-        {
-            ChaseTarget();
+            animator.SetBool("isMoving", false);
         }
         else
         {
-            AttackTarget();
+            if (distanceToTarget > navMeshAgent.stoppingDistance)
+            {
+                ChaseTarget();
+            }
+            else
+            {
+                AttackTarget();
+            }
         }
     }
 

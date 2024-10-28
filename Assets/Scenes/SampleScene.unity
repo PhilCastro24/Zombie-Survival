@@ -15047,6 +15047,12 @@ PrefabInstance:
       propertyPath: ammoText
       value: 
       objectReference: {fileID: 1844530484}
+    - target: {fileID: 2952796050388135550, guid: b3c43503033efba43b740bf6815b06fc,
+        type: 3}
+      propertyPath: weaponSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 6072a5639debe4e4aa98d85ab7463740,
+        type: 2}
     - target: {fileID: 3307981959669229093, guid: b3c43503033efba43b740bf6815b06fc,
         type: 3}
       propertyPath: gameOverCanvas
@@ -15112,11 +15118,23 @@ PrefabInstance:
       propertyPath: ammoText
       value: 
       objectReference: {fileID: 1844530484}
+    - target: {fileID: 7264981082495171863, guid: b3c43503033efba43b740bf6815b06fc,
+        type: 3}
+      propertyPath: weaponSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 756e49632f37a374ca50177ac844fa14,
+        type: 2}
     - target: {fileID: 8252413158143589545, guid: b3c43503033efba43b740bf6815b06fc,
         type: 3}
       propertyPath: ammoText
       value: 
       objectReference: {fileID: 1844530484}
+    - target: {fileID: 8252413158143589545, guid: b3c43503033efba43b740bf6815b06fc,
+        type: 3}
+      propertyPath: weaponSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 9e9327a5325c79849a52ae02544e80a2,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
