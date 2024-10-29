@@ -20,11 +20,7 @@ public class GrenadeController : MonoBehaviour
     {
         countdown = fuseTime;
 
-        audiosource = GetComponent<AudioSource>();
-        if (audiosource == null)
-        {
-            audiosource = gameObject.AddComponent<AudioSource>();
-        }
+        audiosource = Camera.main.GetComponent<AudioSource>();
 
         audiosource.spatialBlend = 1f;
         audiosource.rolloffMode=AudioRolloffMode.Linear;

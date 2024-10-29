@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponentInChildren<CapsuleCollider>();
-        rb.freezeRotation = true;  
+        rb.freezeRotation = true;
 
         originalScale = transform.localScale;
 
@@ -75,8 +75,8 @@ public class PlayerController : MonoBehaviour
     private void HandleMovementInput()
     {
         // Capture movement input
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveZ = Input.GetAxisRaw("Vertical");
+        float moveX = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
+        float moveZ = Input.GetAxisRaw("Vertical") * Time.deltaTime;
 
         movementInput = (transform.right * moveX + transform.forward * moveZ).normalized;
 
