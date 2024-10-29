@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fb80a09982e8f444afdd9ac12fc0ca5, type: 3}
+  m_Name: GrenadeLauncher
+  m_EditorClassIdentifier: 
+  weaponType: 3
+  ammoType: 3
+  range: 100
+  damage: 40
+  timeBetweenShots: 0.5
+  projectilePrefab: {fileID: 6276112449525983327, guid: b7405460a0cb6b546a081c3f9afd9759,
+    type: 3}
+  projectileSpeed: 30
+  explosionRadius: 100
+  explosionForce: 500
+  fuseTime: 3
+  pelletsAmount: 1
+  bulletSpread: 0.01
+  muzzleFlash: {fileID: 0}
+  impactEffect: {fileID: 0}
+  ShootSFX: {fileID: 0}
+  emptyGunSFX: {fileID: 0}
+  explosionSFX: {fileID: 8300000, guid: 3572970761687f543a0637a7a220f44f, type: 3}

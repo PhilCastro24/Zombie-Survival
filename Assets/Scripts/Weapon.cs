@@ -64,7 +64,7 @@ public class Weapon : MonoBehaviour
         if (currentAmmo > 0)
         {
             PlayMuzzleFlash();
-            ProcessRaycast();
+            ProcessShot();
             if (weaponSO.weaponType != WeaponSO.WeaponType.SMG)
             {
                 animator.SetTrigger("Shoot");
@@ -94,7 +94,7 @@ public class Weapon : MonoBehaviour
             if (Physics.Raycast(weaponCamera.transform.position, direction, out hit, weaponSO.range))
             {
                 CreateImpactHit(hit);
-               
+                AlertEnemies(hit.point);
 
                 EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
                 if (target != null)
@@ -103,7 +103,48 @@ public class Weapon : MonoBehaviour
                 }
             }
         }
-        
+    }
+
+    void ProcessShot()
+    {
+        if (weaponSO.weaponType == WeaponSO.WeaponType.GrenadeLauncher)
+        {
+            LaunchProjectile();
+        }
+        else
+        {
+            ProcessRaycast();
+        }
+    }
+
+    void LaunchProjectile()
+    {
+        if (weaponSO.projectilePrefab != null)
+        {
+            GameObject grenade = Instantiate(weaponSO.projectilePrefab, 
+                weaponCamera.transform.position,weaponCamera.transform.rotation);
+
+            Rigidbody rb = grenade.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.velocity = weaponCamera.transform.forward * weaponSO.projectileSpeed;
+            }
+
+            GrenadeController grenadeController = grenade.GetComponent<GrenadeController>();
+            if (grenadeController != null)
+            {
+                grenadeController.damage = weaponSO.damage;
+                grenadeController.explosionRadius = weaponSO.explosionRadius;
+                grenadeController.explosionForce = weaponSO.explosionForce;
+                grenadeController.fuseTime = weaponSO.fuseTime;
+                grenadeController.explosionEffect = weaponSO.impactEffect;
+                grenadeController.explosionSound = weaponSO.explosionSFX;
+            }
+        }
+        else
+        {
+            Debug.LogError("Projectile Prefab is not Assigned in WeaponSO");
+        }
     }
 
     void PlayMuzzleFlash()

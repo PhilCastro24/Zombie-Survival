@@ -10,7 +10,8 @@ public class WeaponSO : ScriptableObject
     {
         Pistol,
         SMG,
-        ShotGun
+        ShotGun,
+        GrenadeLauncher
     }
 
     [Header("General Settings")]
@@ -19,6 +20,13 @@ public class WeaponSO : ScriptableObject
     public float range = 100f;
     public float damage = 40;
     public float timeBetweenShots = 0.5f;
+
+    [Header("Projectile Settings")]
+    public GameObject projectilePrefab;
+    public float projectileSpeed = 10f;
+    public float explosionRadius = 10f;
+    public float explosionForce = 10f;
+    public float fuseTime = 2f;
 
     [Header("Bullets Settings")]
     public int pelletsAmount = 10;
@@ -31,4 +39,5 @@ public class WeaponSO : ScriptableObject
     [Header("Audio sounds")]
     public AudioClip ShootSFX;
     public AudioClip emptyGunSFX;
+    public AudioClip explosionSFX;
 }
