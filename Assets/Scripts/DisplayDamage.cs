@@ -6,7 +6,7 @@ public class DisplayDamage : MonoBehaviour
 {
     [SerializeField] Canvas damageCanvas;
     [SerializeField] List<GameObject> damageImages;
-    [SerializeField] float impactTime = 0.3f;
+    [SerializeField] float impactTime = 5f; //Reset to 0.3f after debuging//
 
 
     void Start()
@@ -18,6 +18,7 @@ public class DisplayDamage : MonoBehaviour
     }
     public void ShowDamageImpact()
     {
+        Debug.Log("Blood Splatter is triggered");
         StartCoroutine(ShowSplatter());
     }
 
